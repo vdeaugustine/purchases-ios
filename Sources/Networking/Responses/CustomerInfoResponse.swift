@@ -12,6 +12,7 @@
 //  Created by Nacho Soto on 4/12/22.
 
 import Foundation
+import MyMacro
 
 /// The representation of ``CustomerInfo`` as sent by the backend.
 /// Thanks to `@IgnoreHashable`, only `subscriber` is used for equality / hash.
@@ -155,6 +156,8 @@ extension CustomerInfoResponse.Subscriber {
         nonSubscriptions: [String: [CustomerInfoResponse.Transaction]],
         entitlements: [String: CustomerInfoResponse.Entitlement]
     ) {
+        let a = #stringify(3 + 2)
+
         self.originalAppUserId = originalAppUserId
         self.managementUrl = managementUrl
         self.originalApplicationVersion = originalApplicationVersion

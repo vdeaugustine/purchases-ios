@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MyMacro">
+   </FileRef>
+   <FileRef
       location = "group:RevenueCat.xcodeproj">
    </FileRef>
 </Workspace>

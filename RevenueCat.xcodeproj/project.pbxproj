@@ -239,6 +239,7 @@
 		4FA4C9742A16D3AC007D2803 /* MockBackendConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4C9722A16D3AC007D2803 /* MockBackendConfiguration.swift */; };
 		4FA4C9752A16D49E007D2803 /* MockOfflineEntitlementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57488BE929CB83540000EE7E /* MockOfflineEntitlementsManager.swift */; };
 		4FA696BD2A0020A000D228B1 /* MainThreadMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA696BC2A0020A000D228B1 /* MainThreadMonitor.swift */; };
+		4FB81EF52A3237CC00B962E8 /* MyMacro in Frameworks */ = {isa = PBXBuildFile; productRef = 4FB81EF42A3237CC00B962E8 /* MyMacro */; };
 		4FCBA84F2A15391B004134BD /* SnapshotTesting+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C8A9127D27DDD0058FA6E /* SnapshotTesting+Extensions.swift */; };
 		4FCBA8512A153940004134BD /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4FCBA8502A153940004134BD /* SnapshotTesting */; };
 		4FD291BE2A1E9A2E0098D1B9 /* StoreKit2TransactionFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD291BD2A1E9A2E0098D1B9 /* StoreKit2TransactionFetcherTests.swift */; };
@@ -1291,6 +1292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B6CDD8280F3843007629D5 /* AdServices.framework in Frameworks */,
+				4FB81EF52A3237CC00B962E8 /* MyMacro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2602,6 +2604,7 @@
 			);
 			name = RevenueCat;
 			packageProductDependencies = (
+				4FB81EF42A3237CC00B962E8 /* MyMacro */,
 			);
 			productName = Purchases;
 			productReference = 2DC5621624EC63420031F69B /* RevenueCat.framework */;
@@ -4060,7 +4063,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4070,7 +4073,7 @@
 				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 6.2;
@@ -4122,7 +4125,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4133,7 +4136,7 @@
 				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4538,6 +4541,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F6BEE0E2A27B02400CD9322 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat_CustomEntitlementComputation;
+		};
+		4FB81EF42A3237CC00B962E8 /* MyMacro */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MyMacro;
 		};
 		4FCBA8502A153940004134BD /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
