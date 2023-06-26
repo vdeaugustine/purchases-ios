@@ -17,7 +17,13 @@ import Foundation
 
 enum DiagnosticsStrings {
 
-    case timing_message(message: String, duration: TimeInterval)
+    case timing_message(message: String, duration: TimingUtil.Duration)
+
+    #if DEBUG
+
+    case timing_under_threshold(duration: TimingUtil.Duration)
+
+    #endif
 
 }
 
@@ -26,11 +32,23 @@ extension DiagnosticsStrings: LogMessage {
     var description: String {
         switch self {
         case let .timing_message(message, duration):
-            let roundedDuration = (duration * 100).rounded(.down) / 100
-            return String(format: "%@ (%.2f seconds)", message.description, roundedDuration)
+            return String(format: "%@ (%.2f seconds)", message.description, duration.rounded)
+
+        #if DEBUG
+        case let .timing_under_threshold(duration):
+            return String(format: "Execution was under threshold: %.2f seconds", duration.rounded)
+        #endif
         }
     }
 
     var category: String { return "diagnostics" }
+
+}
+
+private extension TimingUtil.Duration {
+
+    var rounded: Double {
+        return (self * 100).rounded(.down) / 100
+    }
 
 }

@@ -60,7 +60,7 @@ extension HTTPResponse where Body == Data {
             return .notRequested
         }
 
-        guard let signature = HTTPResponse.value(
+        guard let _ = HTTPResponse.value(
             forCaseInsensitiveHeaderField: HTTPClient.ResponseHeader.signature.rawValue,
             in: headers
         ) else {
@@ -79,17 +79,37 @@ extension HTTPResponse where Body == Data {
             return .failed
         }
 
-        if signing.verify(signature: signature,
-                          with: .init(
-                            message: body,
-                            nonce: request.nonce,
-                            requestDate: requestDate.millisecondsSince1970
-                          ),
-                          publicKey: publicKey) {
-            return .verified
-        } else {
-            return .failed
+        let result = TimingUtil.measureSyncAndLogIfTooSlow(
+            threshold: .signatureVerification,
+            message: Strings.signing.verification_too_slow,
+            level: .error
+        ) {
+            for _ in 0..<1000 {
+                _ = signing.verify(
+                    signature: "nVoKJjLhhTNo19Mkjr5DEmgMf361HWxxMyctC10Ob7f/////+GStaG6mLGXfe+T+p6jDqBkuLHfF3VaCOYLwpCfWQBzeTGXB7ntSs4ESiw9sxHy0VTR0P5mSDxkSteR/qAANCFfQSkHeWl4NJ4IDusH1ieiZRfOpGr3lKo8gfwfJwpki/fa6wAyodzPrIBOD6Z0X6kBF+cPBTP6iwUVehqtCtHwYZA5f8HjZN77UVhwuWVIM",
+                    with: .init(
+                        message: body,
+                        nonce: request.nonce,
+                        requestDate: requestDate.millisecondsSince1970
+                    ),
+                    publicKey: publicKey
+                )
+            }
+
+            return signing.verify(
+                signature: "nVoKJjLhhTNo19Mkjr5DEmgMf361HWxxMyctC10Ob7f/////+GStaG6mLGXfe+T+p6jDqBkuLHfF3VaCOYLwpCfWQBzeTGXB7ntSs4ESiw9sxHy0VTR0P5mSDxkSteR/qAANCFfQSkHeWl4NJ4IDusH1iehUgiku0dMOx5+u53eU3eB45bV7Uttc/AX9bSzpwinw1hqRpuNOyNZOQk0r+vDokRcMlC9XgraztIAO+m0LLtMF",
+                with: .init(
+                    message: body,
+                    nonce: request.nonce,
+                    requestDate: requestDate.millisecondsSince1970
+                ),
+                publicKey: publicKey
+            )
         }
+
+        return result
+            ? .verified
+            : .failed
     }
 
 }
