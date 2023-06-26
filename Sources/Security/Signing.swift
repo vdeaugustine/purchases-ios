@@ -120,7 +120,7 @@ enum Signing: SigningType {
 
     // MARK: -
 
-    private static let publicKey = "UC1upXWg5QVmyOSwozp755xLqquBKjjU+di6U8QhMlM="
+    private static let publicKey = "nVoKJjLhhTNo19Mkjr5DEmgMf361HWxxMyctC10Ob7c="
 
 }
 
