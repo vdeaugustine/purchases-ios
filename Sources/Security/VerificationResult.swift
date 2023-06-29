@@ -40,9 +40,8 @@ import Foundation
 /// - ``Configuration/EntitlementVerificationMode``
 /// - ``Configuration/Builder/with(entitlementVerificationMode:)``
 /// - ``EntitlementInfos/verification``
-// Trusted Entitlements: internal until ready to be made public.
 @objc(RCVerificationResult)
-internal enum VerificationResult: Int {
+public enum VerificationResult: Int {
 
     /// No verification was done.
     ///
@@ -74,7 +73,7 @@ extension VerificationResult: DefaultValueProvider {
 
 extension VerificationResult: CustomDebugStringConvertible {
 
-    var debugDescription: String {
+    public var debugDescription: String {
         let prefix = "\(type(of: self))"
 
         switch self {
