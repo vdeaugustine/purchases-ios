@@ -979,7 +979,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
 			requirement = {
-				branch = "nacho/verify-intermediate-key";
+				branch = "nacho/testing-intermediate-signatures";
 				kind = branch;
 			};
 		};
