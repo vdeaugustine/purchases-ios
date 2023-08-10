@@ -19,7 +19,11 @@ if shouldIncludeDocCPlugin {
 let swiftSettings: [SwiftSetting]
 
 #if swift(>=5.9)
-swiftSettings = [ .define("VISION_OS", .when(platforms: [.custom("visionOS")])) ]
+    #if os(xrOS)
+    swiftSettings = [ .define("VISION_OS", .when(platforms: [.custom("visionOS")])) ]
+    #else
+    swiftSettings = []
+    #endif
 #else
 swiftSettings = []
 #endif
